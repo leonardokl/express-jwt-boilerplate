@@ -1,0 +1,29 @@
+{
+  "name": "express-jwt-boilerplate",
+  "version": "1.0.0",
+  "description": "Skeleton from an express aplication",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "DEBUG=MASTER nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "mongoose",
+    "mongodb",
+    "node",
+    "jwt"
+  ],
+  "author": "Leonardo Luiz",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.0.2",
+    "body-parser": "^1.14.1",
+    "debug": "^2.2.0",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.4.1",
+    "mongoose": "^4.2.3",
+    "morgan": "^1.6.1"
+  }
+}
