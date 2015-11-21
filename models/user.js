@@ -1,12 +1,11 @@
-'use strict'
+"use strict"
 
-var bcrypt = require('bcrypt-nodejs');
-var jwt = require('jsonwebtoken');
-var configAuth = require('../config/auth');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var bcrypt = require("bcrypt-nodejs");
+var jwt = require("jsonwebtoken");
+var configAuth = require("../config/auth");
+var mongoose = require("mongoose");
 
-var UserSchema = new Schema({
+var UserSchema = new mongoose.Schema({
     login: {
         type: String,
         unique: true,
@@ -35,8 +34,8 @@ var UserSchema = new Schema({
     }
 });
 
-UserSchema.statics.getUserByLogin = function getUserByLoginStatic(login){
-    return this.findOne({ 'login': login });
+UserSchema.statics.getUserByLogin = function getUserByLoginStatic(login) {
+    return this.findOne({"login": login});
 };
 
 UserSchema.statics.updateUserByLogin = function updateUserByLoginStatic(login) {
@@ -48,7 +47,7 @@ UserSchema.statics.comparePasswords = function comparePasswordsStatic(auth_passw
 };
 
 UserSchema.statics.createToken = function createTokenStatic(user) {
-    var token = jwt.sign(user, configAuth.secret, {
+    let token = jwt.sign(user, configAuth.secret, {
         expiresInMinutes: 1440 // expires in 24 hours
     });
     return token;

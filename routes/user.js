@@ -1,13 +1,15 @@
-'use strict'
+"use strict";
 
-var userCtrl = require("../controllers/user");
-var jwt = require('../middlewares/auth');
+const express = require("express"),
+    userCtrl = require("../controllers/user"),
+    jwt = require("../middlewares/auth"),
+    router = new express.Router();
 
-module.exports = function userRoutes(router) {
-    router.route('/users')
-        .get(jwt.checkToken, userCtrl.index)
-        .post(userCtrl.create);
+router.route("/")
+    .get(jwt.checkToken, userCtrl.index)
+    .post(userCtrl.create);
 
-    router.route('/users/:login')
-        .get(jwt.checkToken, userCtrl.getUserByLogin)
-}
+router.route("/:login")
+    .get(jwt.checkToken, userCtrl.getUserByLogin)
+
+module.exports = router;

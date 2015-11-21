@@ -1,15 +1,22 @@
-'use strict'
+"use strict"
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require("mongoose");
 
-var UnitSchema = new Schema({
-      name: { type: String, required: true },
-      location: { type: [Number]}, //[Long, Lat]
-      phone: { type: String, default: null}
+var UnitSchema = new mongoose.Schema({
+      name: {
+          type: String,
+          required: true
+      },
+      location: {
+          type: [Number]
+      }, //[Long, Lat]
+      phone: {
+          type: String,
+          default: null
+      }
 });
 
-UnitSchema.index({location: '2dsphere'});
+UnitSchema.index({location: "2dsphere"});
 
 UnitSchema.statics.getById = function getByIdStatic(id) {
     return this.findById(id);

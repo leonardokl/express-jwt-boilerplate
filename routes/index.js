@@ -1,7 +1,5 @@
-'use strict'
+"use strict";
 
-module.exports = function routesModule(router) {
-    require('./auth')(router);
-    require('./user')(router);
-    require('./unit')(router);
-}
+exports.unit = require("./unit");
+exports.auth = require("./auth");
+exports.user = require("./user");

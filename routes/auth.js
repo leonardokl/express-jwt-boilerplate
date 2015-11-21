@@ -1,8 +1,11 @@
-'use strict'
+"use strict";
 
-var authCtrl = require("../controllers/auth");
+const express = require("express"),
+    bodyParser = require("body-parser"),
+    authCtrl = require("../controllers/auth"),
+    router = new express.Router();
 
-module.exports = function authRoutes(router) {
-    router.route('/auth')
-        .post(authCtrl.authenticate);
-}
+router.route("/")
+    .post(authCtrl.authenticate);
+
+module.exports = router;
